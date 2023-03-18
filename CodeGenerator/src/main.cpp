@@ -724,6 +724,7 @@ fuzzy.addFuzzyRule(&rule99);
 
 void loop()
 {
+  Serial.print("\n\n");
 
 float input1 = random(21, 43);
 float input2 = random(0, 100);
