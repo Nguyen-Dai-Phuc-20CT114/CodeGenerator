@@ -312,6 +312,9 @@
         str += `  float output = fuzzy.defuzzify(INDEX_FUZZY_OUTPUT);<br>`;
         str += `  Serial.printf("Ouput: %.2f\\n", output);<br>`;
 
+        str += `<br>`;
+        str += `  delay(12000);<br>`;
+
         str += `}<br>`;
     
         document.body.innerHTML += str;

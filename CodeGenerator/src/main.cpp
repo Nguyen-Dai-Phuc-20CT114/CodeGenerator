@@ -738,6 +738,8 @@ fuzzy.fuzzify();
 
 float output = fuzzy.defuzzify(INDEX_FUZZY_OUTPUT);
 Serial.printf("Ouput: %.2f\n", output);
+
+delay(12000);
 }
 
 
