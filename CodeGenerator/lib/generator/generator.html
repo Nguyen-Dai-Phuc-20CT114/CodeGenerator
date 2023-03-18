@@ -268,7 +268,10 @@
         str += `void setup()<br>`;
         str += `{<br>`;
 
+        str += `  Serial.begin(115200);<br>`;
         str += `  randomSeed(analogRead(0));<br>`;
+        str += `<br>`;
+
         str += `  fuzzy.addFuzzyInput  (&fuzzyInput1);<br>`;
         str += `  fuzzy.addFuzzyInput  (&fuzzyInput2);<br>`;
         str += `  fuzzy.addFuzzyOutput (&fuzzyOutput);<br>`;
@@ -290,11 +293,24 @@
         str += `void loop()<br>`;
         str += `{<br>`;
 
-        str += `  fuzzy.setInput(INDEX_FUZZY_INPUT1, random(${fuzzySets_input1[1]}, ${fuzzySets_input1[num_fuzzySets_input1-2]}));<br>`;
-        str += `  fuzzy.setInput(INDEX_FUZZY_INPUT2, random(${fuzzySets_input2[1]}, ${fuzzySets_input2[num_fuzzySets_input2-2]}));<br>`;
-        str += `  fuzzy.fuzzify();`;
+        str += `<br>`;
+        str += `  float input1 = random(${fuzzySets_input1[1]}, ${fuzzySets_input1[num_fuzzySets_input1-2]});<br>`;
+        str += `  float input2 = random(${fuzzySets_input2[1]}, ${fuzzySets_input2[num_fuzzySets_input2-2]});<br>`;
 
-        str += `  float heatIndex = fuzzy.defuzzify(INDEX_FUZZY_OUTPUT);`;
+        str += `<br>`;
+        str += `Serial.printf("Input 1: %.2f\\n", input1);<br>`;
+        str += `Serial.printf("Input 2: %.2f\\n", input2);<br>`;
+
+        str += `<br>`;
+        str += `  fuzzy.setInput(INDEX_FUZZY_INPUT1, input1);<br>`;
+        str += `  fuzzy.setInput(INDEX_FUZZY_INPUT2, input2);<br>`;
+
+        str += `<br>`;
+        str += `  fuzzy.fuzzify();<br>`;
+
+        str += `<br>`;
+        str += `  float output = fuzzy.defuzzify(INDEX_FUZZY_OUTPUT);<br>`;
+        str += `  Serial.printf("Ouput: %.2f\\n", output);<br>`;
 
         str += `}<br>`;
     
