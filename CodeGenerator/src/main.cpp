@@ -611,6 +611,8 @@ FuzzyRule rule99 = FuzzyRule(99, &antecedent99, &consequent99);
 void setup()
 {
 Serial.begin(115200);
+Serial.print("\n\n");
+
 randomSeed(analogRead(0));
 
 fuzzy.addFuzzyInput (&fuzzyInput1);
@@ -724,13 +726,9 @@ fuzzy.addFuzzyRule(&rule99);
 
 void loop()
 {
-  Serial.print("\n\n");
 
 float input1 = random(21, 43);
 float input2 = random(0, 100);
-
-Serial.printf("Input 1: %.2f\n", input1);
-Serial.printf("Input 2: %.2f\n", input2);
 
 fuzzy.setInput(INDEX_FUZZY_INPUT1, input1);
 fuzzy.setInput(INDEX_FUZZY_INPUT2, input2);
@@ -738,9 +736,9 @@ fuzzy.setInput(INDEX_FUZZY_INPUT2, input2);
 fuzzy.fuzzify();
 
 float output = fuzzy.defuzzify(INDEX_FUZZY_OUTPUT);
-Serial.printf("Ouput: %.2f\n", output);
+Serial.printf("Input1: %.2f | Input 2: %.2f | Ouput: %.2f\n", input1, input2, output);
 
-delay(12000);
+delay(2000);
 }
 
 
